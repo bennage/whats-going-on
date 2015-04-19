@@ -23,7 +23,7 @@
     <ol>
         @Each.TopTenOldest
         <li>
-            <a href="@Current.Url">@Current.Title</a>
+            <a href="@Current.HtmlUrl">@Current.Title</a>
         </li>
         @EndEach
     </ol>
