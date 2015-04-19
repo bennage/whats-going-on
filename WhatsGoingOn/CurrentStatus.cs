@@ -9,6 +9,7 @@ namespace WhatsGoingOn
     {
         public int TotalOpenIssues { get; private set; }
         public double OldestIssueAge { get; private set; }
+        public IList<Issue> TopTenOldest { get; private set; }
 
         public CurrentStatus(IList<Tuple<Repository, IReadOnlyList<Issue>>> state)
         {
@@ -19,6 +20,8 @@ namespace WhatsGoingOn
                 .OrderBy(x => x.CreatedAt);
 
             OldestIssueAge = (DateTime.UtcNow - oldestToYoungest.First().CreatedAt).TotalDays;
+
+            TopTenOldest = oldestToYoungest.Take(10).ToList();
         }
     }
 }

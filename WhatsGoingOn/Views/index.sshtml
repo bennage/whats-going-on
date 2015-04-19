@@ -1,20 +1,31 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <title>WhatsGoingOn</title>
-
-	<style type="text/css">
-
-		body {
-			text-align: center;
-		}
-
-	</style>
-
+    <meta charset="utf-8"/>
+    <title>What's Going On?</title>
 </head>
+
 <body>
-	<img src="@Path['~/Content/nancy-logo.png']" alt="Nancy logo" /><br />
-	This view was rendered using the SuperSimpleViewEngine
+
+<table>
+    <tr>
+        <th>Total Open Issues</th>
+        <td>@Model.TotalOpenIssues</td>
+    </tr>
+
+    <tr>
+        <th>Oldest Issue</th>
+        <td>@Model.OldestIssueAge days</td>
+    </tr>
+</table>
+
+    <ol>
+        @Each.TopTenOldest
+        <li>
+            <a href="@Current.Url">@Current.Title</a>
+        </li>
+        @EndEach
+    </ol>
 </body>
 </html>
